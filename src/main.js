@@ -3,7 +3,9 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './plugins/element.js'
-// import 'element-ui/lib/theme-chalk/index.css'; // 默认主题
+import './styles/mixin.less' //定义常见变量
+import './styles/index.css' //基础样式
+import './styles/common.less' //公共样式
 
 Vue.config.productionTip = false
 
