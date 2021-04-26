@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
+import Index from './views/Index.vue'
 
 Vue.use(Router)
 
@@ -14,15 +14,25 @@ export default new Router({
                 import ( /* webpackChunkName: "login" */ './views/Login.vue'),
             meta: { title: '登录' }
         }, {
-            path: '/home',
-            name: 'home',
-            component: Home
+            path: '/index',
+            name: 'index',
+            component: Index
         },
         {
-            path: '/about',
-            name: 'about',
+            path: '/error',
+            name: 'error',
             component: () =>
-                import ( /* webpackChunkName: "about" */ './views/About.vue')
-        }
+                import ( /* webpackChunkName: "Error" */ './views/Error.vue')
+        },
+        {
+            path: '/404',
+            name: '404',
+            component: () =>
+                import ( /* webpackChunkName: "Error" */ './views/404.vue')
+        },
+        {
+            path: '*',
+            redirect: '/404',
+        },
     ]
 })

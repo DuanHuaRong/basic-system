@@ -14,3 +14,14 @@ new Vue({
     store,
     render: h => h(App)
 }).$mount('#app')
+router.beforeEach((to, from, next) => {
+    if (to.path === '/login') {
+        next();
+    } else {
+        if (store.state.userData.userName === undefined) {
+            next({ path: '/login' })
+        } else {
+            next();
+        }
+    }
+});

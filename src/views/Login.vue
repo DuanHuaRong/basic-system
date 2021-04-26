@@ -10,16 +10,16 @@
           label-width="0px"
           style="width: 100%"
         >
-          <el-form-item prop="user">
-            <el-input v-model="param.user" placeholder="账号">
+          <el-form-item prop="userName">
+            <el-input v-model="param.userName" placeholder="用户名">
               <el-button slot="prepend" icon="el-icon-lx-people"></el-button>
             </el-input>
           </el-form-item>
-          <el-form-item prop="pwd">
+          <el-form-item prop="passWord">
             <el-input
               placeholder="密码"
               type="password"
-              v-model="param.pwd"
+              v-model="param.passWord"
               @keyup.enter.native="submitForm()"
             >
               <el-button slot="prepend" icon="el-icon-lx-lock"></el-button>
@@ -35,17 +35,19 @@
 </template>
 
 <script>
+
 export default {
+  name:'login',
   data: function () {
     return {
       param: {
-        user: "",
-        pwd: "",
+        userName: "",
+        passWord: "",
       },
       loading: false,
       rules: {
-        user: [{ required: true, message: "请输入用户名", trigger: "blur" }],
-        pwd: [
+        userName: [{ required: true, message: "请输入用户名", trigger: "blur" }],
+        passWord: [
           { required: true, message: "请输入密码", trigger: "blur" },
           { min: 3, message: "密码长度最少为3位", trigger: "blur" },
         ],
@@ -56,6 +58,17 @@ export default {
     submitForm() {
       this.$refs.login.validate((valid) => {
         if (valid) {
+          let { userName, passWord } = this.param;
+          if (userName === "admin" && passWord === "admin") {
+            this.$store.commit('updateData',this.param)
+            this.$router.push({
+              name: "index",
+            });
+          } else {
+            this.$router.push({
+              name: "error",
+            });
+          }
         } else {
           this.$message.error("请输入用户名和密码");
         }
@@ -84,10 +97,19 @@ export default {
   animation-fill-mode: both;
   width: 350px;
   border-radius: 8px;
-  box-shadow: 1px 0px 5px 0px rgb(144, 122, 122);
+  box-shadow: 1px 0px 3px 0px @basicColor;
   & > div {
     width: 100%;
   }
+}
+/deep/ .el-input__inner {
+  border-color: @basicColor;
+}
+/deep/ .el-input-group__prepend {
+  border-color: @basicColor;
+}
+.ms-title {
+  color: @basicColor;
 }
 // @-webkit-keyframes
 @keyframes bounceInDown {
