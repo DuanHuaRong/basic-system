@@ -12,7 +12,7 @@
         >
           <el-form-item prop="userName">
             <el-input v-model="param.userName" placeholder="用户名">
-              <el-button slot="prepend" icon="el-icon-lx-people"></el-button>
+              <i slot="prepend" class="el-icon-lx-people"></i>
             </el-input>
           </el-form-item>
           <el-form-item prop="passWord">
@@ -22,7 +22,7 @@
               v-model="param.passWord"
               @keyup.enter.native="submitForm()"
             >
-              <el-button slot="prepend" icon="el-icon-lx-lock"></el-button>
+              <i slot="prepend" class="el-icon-lx-lock"></i>
             </el-input>
           </el-form-item>
           <div class="login-btn">
@@ -35,9 +35,8 @@
 </template>
 
 <script>
-
 export default {
-  name:'login',
+  name: "login",
   data: function () {
     return {
       param: {
@@ -60,12 +59,12 @@ export default {
         if (valid) {
           let { userName, passWord } = this.param;
           if (userName === "admin" && passWord === "admin") {
-            this.$store.commit('updateData',this.param)
+            this.$store.commit("updateData", this.param);
             this.$router.push({
               name: "index",
             });
           } else {
-            console.log('进来了')
+            this.$store.commit("updateData", this.param);
             this.$router.push({
               name: "error",
             });

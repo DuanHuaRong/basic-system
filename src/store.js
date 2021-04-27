@@ -10,7 +10,6 @@ export default new Vuex.Store({
     getters: {},
     mutations: {
         updateData(state, item) {
-            console.log('登录进来', item)
             state.userData = item;
         },
     },
