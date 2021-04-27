@@ -65,6 +65,7 @@ export default {
               name: "index",
             });
           } else {
+            console.log('进来了')
             this.$router.push({
               name: "error",
             });
