@@ -1,4 +1,5 @@
 const vueConfig = {
+    publicPath: "./",
     // 加上以下的配置
     chainWebpack: (config) => {
         const oneOfsMap = config.module.rule("less").oneOfs.store;
