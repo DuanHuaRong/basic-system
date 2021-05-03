@@ -14,7 +14,7 @@
 # 项目访问地址
 https://duanhuarong.github.io/basic-system/dist/index.html
 
-# 招商银行一面
+# 招商银行前端一面
 使用React/Vue/Angular搭建一个前端项目，此项目有3个界面：登录页 、首页、报错页，且满足以下要求：
 1. 登录页对应路由为/login 、首页对应路由为/index、报错页对应路由为/error；
 2. 登录页需要用户输入账号与密码（账号和密码默认是admin/admin），用户登录成功后，会跳转到首页；用户登录失败后，跳转到报错页；
